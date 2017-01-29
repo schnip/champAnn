@@ -1,4 +1,55 @@
-%function [locations] = locateChampByHealthbar(img)
+function [locations] = locateChampByHealthbar(img)
+% locateChampByHealthbar
+% Finds a champion based on the health bar. Returns the location of the
+% bounding box, based on upper left and lower right corners.
 
-% This function returns a nx4 array, giving the bounding corners of all champion areas dictated by the presence of a healthbar
+% Initialize for results
+red = img(:,:,1);
+green = img(:,:,2);
+blue = img(:,:,3);
+
+locations = [0 0 0 0];
+heroNum = 1;
+
+% create mask based on health bar color
+mask = zeros(size(red));
+mask(blue > 250 & red < 30 & green < 30) = 1; % blue health bar
+mask(green > 250 & red < 30 & blue < 30) = 1; % green health bar
+mask(red > 250 & blue < 30 & green < 30) = 1; % red health bar
+mask(blue > 250 & red > 250 & green > 250) = 1; % black/empty health bar
+
+% Find rectangular regions
+label = bwlabel(mask);
+
+for i=1:max(max(label))
+    pixels = zeros(size(label));
+    pixels(label == i) = 1;
+    numPixels = sum(sum(pixels));
+    
+    if (numPixels > 400 && numPixels < 500)
+        % region is the right size for a health bar
+        colNums = 1:1:size(pixels,2);
+        rowNums = (1:1:size(pixels,1))';
+        
+        healthRows = sum(pixels,1);
+        healthRows = rowNums(healthRows > 0);
+        height = max(healthRows) - min(healthRows);
+        
+        healthCols = sum(pixels, 2);
+        healthCols = colNums(healthRows > 0);
+        width = max(healthCols) - min(healthCols);
+        
+        if (height < 20 && width < 150)
+            % region has the right dimensions for a health bar
+            locations(heroNum,1) = min(healthCols);
+            locations(heroNum,2) = min(healthRows);
+            locations(heroNum,3) = max(healthCols);
+            locations(heroNum,4) = max(healthRows);
+            heroNum = heroNum + 1;
+        end
+    end
+    
+end
+
+end
 
