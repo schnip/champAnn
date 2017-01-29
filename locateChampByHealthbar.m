@@ -42,12 +42,12 @@ for i=1:max(max(label))
         
         if (height < 15 & width < 150)
             % region has the right dimensions for a health bar
-            
+            coord = find(pixels, 1)
             heroNum = heroNum + 1;
-            locations(heroNum,1) = min(healthCols);
-            locations(heroNum,2) = min(healthRows);
-            locations(heroNum,3) = max(healthCols);
-            locations(heroNum,4) = max(healthRows);
+            locations(heroNum,1) = coord(1) - 50;
+            locations(heroNum,2) = coord(2);
+            locations(heroNum,3) = coord(1) + 100;
+            locations(heroNum,4) = coord(2) + 200;
         end
     end
     
