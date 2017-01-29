@@ -9,7 +9,10 @@ for f = infiles'
 	jpg = strfind(f.name, 'jpg');
 	if PNG | png | JPG | jpg
 		img = readInImage(strcat(ingestfolder, f.name));
-		boxes = locateChampByHealthbar(img);
-		
+		boxes = locateChampByHealthbar(img)
+		for i = 1:size(boxes,1)
+			inimg = clip(img, boxes(i,:));
+			imshow(inimg)
+		end
 	end
 end
