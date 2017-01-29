@@ -1,4 +1,4 @@
-%function [locations] = locateChampByHealthbar(img)
+function [locations] = locateChampByHealthbar(img)
 % locateChampByHealthbar
 % Finds a champion based on the health bar. Returns the location of the
 % bounding box, based on upper left and lower right corners.
