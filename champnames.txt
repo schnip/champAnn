@@ -132,4 +132,5 @@ zed
 ziggs
 zilean
 zyra
+turret
 other

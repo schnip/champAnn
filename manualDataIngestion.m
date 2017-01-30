@@ -1,3 +1,5 @@
+close all
+
 ingestfolder = 'ingestfolder/';
 postgestfolder = 'postgestfolder/';
 infiles = dir(ingestfolder);
