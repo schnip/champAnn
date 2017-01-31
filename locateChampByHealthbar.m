@@ -31,7 +31,7 @@ mask = imdilate(mask,strel('square',4));
 label = bwlabel(mask);
 max(max(label))
 pixels = zeros(size(label));
-imshow(label);
+%imshow(label);
 
 for i=1:max(max(label))
     pixels(:,:) = 0;
