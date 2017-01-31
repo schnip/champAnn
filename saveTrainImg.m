@@ -10,11 +10,11 @@ if exist(infopath, 'file') == 2
 	load(infopath);
 end
 
-while exist(strcat(foldpath, char(num), '.png')) == 2
+while exist(strcat(foldpath, num2str(num), '.png')) == 2
 	num = num + 1;
 end
 
-imwrite(img, strcat(foldpath, char(num), '.png'));
+imwrite(img, strcat(foldpath, num2str(num), '.png'));
 
 num = num + 1;
 

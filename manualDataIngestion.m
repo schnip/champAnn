@@ -21,8 +21,8 @@ for f = infiles'
 			imshow(inimg)
 			s = listdlg('PromptString', 'Which champion is this?', 'ListString', champs);
 			champname = champs{s}
-			%saveTrainImg(inimg, champname);
+			saveTrainImg(inimg, champname);
 		end
-		%movefile(strcat(ingestfolder, f.name), postgestfolder);
+		movefile(strcat(ingestfolder, f.name), postgestfolder);
 	end
 end
