@@ -10,7 +10,7 @@ if exist(infopath, 'file') == 2
 	load(infopath);
 end
 
-while exit(strcat(foldpath, char(num), '.png')) == 2
+while exist(strcat(foldpath, char(num), '.png')) == 2
 	num = num + 1;
 end
 

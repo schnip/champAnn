@@ -40,7 +40,7 @@ for i=1:max(max(label))
     
     if (numPixels > 1000 && numPixels < 2500)
         % region is the right size for a health bar
-        imshow(pixels);
+        %imshow(pixels);
 
         colNums = 1:1:size(pixels,2);
         rowNums = (1:1:size(pixels,1))';
