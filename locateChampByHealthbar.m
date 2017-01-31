@@ -3,6 +3,9 @@ function [locations] = locateChampByHealthbar(img)
 % Finds a champion based on the health bar. Returns the location of the
 % bounding box, based on upper left and lower right corners.
 
+%size(img)
+img = img(1:(size(img, 1) - 50), 1:size(img,2), :);
+
 % Initialize for results
 red = img(:,:,1);
 green = img(:,:,2);
