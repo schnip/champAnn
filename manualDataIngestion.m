@@ -5,6 +5,7 @@ postgestfolder = 'postgestfolder/';
 infiles = dir(ingestfolder);
 champs = textscan(fopen('champnames.txt'), '%s');
 champs = champs{1};
+s = 1;
 
 for f = infiles'
 	f.name
@@ -19,7 +20,7 @@ for f = infiles'
 		for i = 1:size(boxes,1)
 			inimg = clip(img, boxes(i,:));
 			imshow(inimg)
-			s = listdlg('PromptString', 'Which champion is this?', 'ListString', champs);
+			s = listdlg('PromptString', 'Which champion is this?', 'InitialValue', s, 'ListString', champs);
 			champname = champs{s}
 			saveTrainImg(inimg, champname);
 		end
