@@ -58,8 +58,8 @@ for i=1:max(max(label))
             heroNum = heroNum + 1;
             locations(heroNum,1) = min(healthRows) + 50;
             locations(heroNum,2) = min(healthCols) - 50;
-            locations(heroNum,3) = max(healthRows) + 150;
-            locations(heroNum,4) = max(healthCols) + 50;
+            locations(heroNum,3) = max(healthRows) + 200;
+            locations(heroNum,4) = max(healthCols) + 0;
         end
     end
     
