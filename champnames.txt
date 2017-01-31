@@ -56,7 +56,7 @@ khaZix
 kindred
 kled
 kogmaw
-leBlanc
+leblanc
 leesin
 leona
 lissandra
