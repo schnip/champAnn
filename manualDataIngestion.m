@@ -6,6 +6,8 @@ infiles = dir(ingestfolder);
 champs = textscan(fopen('champnames.txt'), '%s');
 champs = champs{1};
 s = 1;
+fig = figure;
+fig.Position = [100 100 100 100];
 
 for f = infiles'
 	f.name
