@@ -1,1 +1,3 @@
-imds = imageDatastore('')
+close all;
+clear;
+
