@@ -1,6 +1,6 @@
 function saveTrainImg(img, champname)
 
-foldpath = 'trainingset/';
+foldpath = 'trainingimg/';
 foldpath = strcat(foldpath, champname);
 foldpath = strcat(foldpath, '/');
 infopath = strcat(foldpath, 'info.mat');
