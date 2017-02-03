@@ -7,7 +7,7 @@ champs = textscan(fopen('champnames.txt'), '%s');
 champs = champs{1};
 s = 1;
 fig = figure;
-fig.Position = [400 400 400 400];
+fig.Position = [200 200 200 200];
 
 for f = infiles'
 	f.name
