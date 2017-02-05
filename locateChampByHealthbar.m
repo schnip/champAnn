@@ -32,7 +32,7 @@ mask = imdilate(mask,strel('square',4));
 
 % Find rectangular regions
 label = bwlabel(mask);
-max(max(label))
+max(max(label));
 pixels = zeros(size(label));
 %imshow(label);
 
