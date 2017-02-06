@@ -50,11 +50,11 @@ for i=1:max(max(label))
         
         healthRows = sum(pixels,2);
         healthRows = rowNums(healthRows > 0);
-        height = max(healthRows) - min(healthRows)
+        height = max(healthRows) - min(healthRows);
         
         healthCols = sum(pixels, 1);
         healthCols = colNums(healthCols > 0);
-        width = max(healthCols) - min(healthCols)
+        width = max(healthCols) - min(healthCols);
         
         if (height < 30 && width < 150)
             % region has the right dimensions for a health bar
