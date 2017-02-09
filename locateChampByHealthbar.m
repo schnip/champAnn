@@ -25,39 +25,50 @@ mask = zeros(size(red));
 mask(hue < 0.03 | hue > 0.98) = 1; % red health bar
 mask(hue < 0.6 & hue > 0.5) = 1; % blue health bar
 mask(hue < 0.36 & hue > 0.3) = 1; % green health bar
+
+mask(val < 0.6) = 0;    % eliminate dim regions
 mask(blue < 15 & red < 15 & green < 15) = 1; % black/empty health bar
 
 mask = imerode(mask,strel('square',4));
 mask = imdilate(mask,strel('square',4));
+mask = imdilate(mask,strel('square',4));
+mask = imerode(mask,strel('square',4));
 
 % Find rectangular regions
 label = bwlabel(mask);
 max(max(label));
 pixels = zeros(size(label));
+%figure(2);
 %imshow(label);
+%imtool(img_hsv);
 
+% figure(3);
 for i=1:max(max(label))
     pixels(:,:) = 0;
     pixels(label == i) = 1;
     numPixels = sum(sum(pixels));
     
-    if (numPixels > 1000 && numPixels < 2500)
+    % Display image for debugging purposes
+    % imshow(pixels);
+    
+    if (numPixels > 700 && numPixels < 1600)
         % region is the right size for a health bar
         %imshow(pixels);
 
         colNums = 1:1:size(pixels,2);
         rowNums = (1:1:size(pixels,1))';
-        
+
         healthRows = sum(pixels,2);
         healthRows = rowNums(healthRows > 0);
         height = max(healthRows) - min(healthRows);
-        
+
         healthCols = sum(pixels, 1);
         healthCols = colNums(healthCols > 0);
         width = max(healthCols) - min(healthCols);
-        
-        if (height < 30 && width < 150)
+
+        if (height < 20 && width < 150 && width > 50)
             % region has the right dimensions for a health bar
+            % imshow(pixels);
             heroNum = heroNum + 1;
             locations(heroNum,1) = min(healthRows) + 50;
             locations(heroNum,2) = min(healthCols) - 50;
@@ -65,7 +76,6 @@ for i=1:max(max(label))
             locations(heroNum,4) = max(healthCols) + 0;
         end
     end
-    
 end
 
 end
