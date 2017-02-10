@@ -69,11 +69,18 @@ for i=1:max(max(label))
         if (height < 20 && width < 150 && width > 50)
             % region has the right dimensions for a health bar
             % imshow(pixels);
-            heroNum = heroNum + 1;
-            locations(heroNum,1) = min(healthRows) + 50;
-            locations(heroNum,2) = min(healthCols) - 50;
-            locations(heroNum,3) = max(healthRows) + 200;
-            locations(heroNum,4) = max(healthCols) + 0;
+            % Check to see if hero is in image
+            top = min(healthRows) + 50;
+            left = min(healthCols) - 50;
+            bottom = max(healthRows) + 200;
+            right = max(healthCols) + 0;
+            if (left > 50 && size(img,2) - right > 0 && size(img,1) - bottom > 200) 
+                heroNum = heroNum + 1;
+                locations(heroNum,1) = top;
+                locations(heroNum,2) = left;
+                locations(heroNum,3) = bottom;
+                locations(heroNum,4) = right;
+            end
         end
     end
 end
