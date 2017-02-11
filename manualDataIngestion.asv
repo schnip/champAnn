@@ -1,5 +1,4 @@
 close all
-clear all
 
 ingestfolder = 'ingestfolder/';
 postgestfolder = 'postgestfolder/';
@@ -20,17 +19,13 @@ for f = infiles'
 	if num > 0
 		img = readInImage(strcat(ingestfolder, f.name));
 		boxes = locateChampByHealthbar(img)
-		for i = 1:9:(size(boxes,1)-1)*9
+		for i = 1:9:size(boxes,1)*9   %8 images, ignoring center
 			inimg = clip(img, boxes(i,:));
 			imshow(inimg)
 			s = listdlg('PromptString', 'Which champion is this?', 'InitialValue', s, 'ListString', champs);
 			champname = champs{s}
-            inimg = clip(img, boxes(i,:));
-            saveTrainImg(inimg, champname);
-            for j = 1:8
-                inimg = clip(img, boxes(i+j,:));
-                saveTrainImg(inimg, champname);
-            end
+			saveTrainImg(inimg, champname);
+            for j = 1:8 %8 images, ignoring center
 		end
 		movefile(strcat(ingestfolder, f.name), postgestfolder);
 	end
