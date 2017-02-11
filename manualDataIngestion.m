@@ -20,7 +20,7 @@ for f = infiles'
 	if num > 0
 		img = readInImage(strcat(ingestfolder, f.name));
 		boxes = locateChampByHealthbar(img)
-		for i = 1:9:(size(boxes,1)-1)*9
+		for i = 1:9:size(boxes,1)
 			inimg = clip(img, boxes(i,:));
 			imshow(inimg)
 			s = listdlg('PromptString', 'Which champion is this?', 'InitialValue', s, 'ListString', champs);
