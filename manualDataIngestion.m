@@ -19,7 +19,7 @@ for f = infiles'
 	num = size(PNG,1) + size(png,1) + size(JPG,1) + size(jpg,1);
 	if num > 0
 		img = readInImage(strcat(ingestfolder, f.name));
-		boxes = locateChampByHealthbar(img)
+		boxes = locateChampByHealthbar(img, 0)
 		for i = 1:9:size(boxes,1)
 			inimg = clip(img, boxes(i,:));
 			imshow(inimg)
