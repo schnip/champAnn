@@ -13,5 +13,7 @@ for i=1:size(locs, 1)
 	clips = clip(img, loc);
 	feat = featureDetect(clips);
 	iam = net(feat(:));
-	champs(find(max(iam) == iam))
+	cn = champs(find(max(iam) == iam))
+	img = annotateImage(img, loc, cn);
 end
+

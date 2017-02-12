@@ -3,7 +3,18 @@ vw = VideoWriter('faker_out');
 open(vw);
 while hasFrame(vr)
 	frame = readFrame(vr);
-	strcat(num2str(100 * vr.CurrentTime / vr.Duration), ' %')
+	locs = locateChampByHealthbar(frame);
+	if locs ~= [0 0 0 0]
+		for i=1:size(locs, 1)
+			loc = locs(i,:);
+			clips = clip(frame, loc);
+			feat = featureDetect(clips);
+			iam = net(feat(:));
+			cn = champs(find(max(iam) == iam))
+			frame = annotateImage(frame, loc, cn);
+		end		
+	end																					
 	writeVideo(vw, frame);
+	strcat(num2str(100 * vr.CurrentTime / vr.Duration), ' %')
 end
 close(vw);

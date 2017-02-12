@@ -66,6 +66,7 @@ for i=1:numRegions
     
     % Display image for debugging purposes
     % imshow(pixels);
+
     
     if (numPixels > 700 && numPixels < 1600)
         % region is the right size for a health bar
