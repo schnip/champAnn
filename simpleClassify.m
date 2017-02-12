@@ -7,8 +7,11 @@ in = features(:);
 y = net(in);
 
 img = imread('test3.png');
-locs = locateChampByHealthbar(img)
-clips = clip(img, locs);
-feat = featureDetect(clips);
-iam = net(feat(:));
-champs(find(max(iam) == iam))
+locs = locateChampByHealthbar(img);
+for i=1:size(locs, 1)
+	loc = locs(i,:);
+	clips = clip(img, loc);
+	feat = featureDetect(clips);
+	iam = net(feat(:));
+	champs(find(max(iam) == iam))
+end
