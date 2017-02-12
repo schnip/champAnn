@@ -3,8 +3,12 @@ function [locations] = locateChampByHealthbar(img)
 % Finds a champion based on the health bar. Returns the location of the
 % bounding box, based on upper left and lower right corners.
 
-%size(img)
+% Eliminate regions at bottom of screen
 img = img(1:(size(img, 1) - 50), 1:size(img,2), :);
+
+% Determine size of image (should be 1080x1920).
+img_width = size(img,2);
+img_height = size(img,1);
 
 % Initialize for results
 red = img(:,:,1);
@@ -34,16 +38,20 @@ mask = imdilate(mask,strel('square',4));
 mask = imdilate(mask,strel('square',4));
 mask = imerode(mask,strel('square',4));
 
+% Eliminate HUD and minimap
+mask(870:1080, 355:1335) = 0;
+mask(712:1080, 1630:1920) = 0;
+
 % Find rectangular regions
 label = bwlabel(mask);
-max(max(label));
+numRegions = max(max(label));
 pixels = zeros(size(label));
 %figure(2);
 %imshow(label);
 %imtool(img_hsv);
 
 % figure(3);
-for i=1:max(max(label))
+for i=1:numRegions
     pixels(:,:) = 0;
     pixels(label == i) = 1;
     numPixels = sum(sum(pixels));
@@ -74,7 +82,7 @@ for i=1:max(max(label))
             left = min(healthCols) - 50;
             bottom = max(healthRows) + 200;
             right = max(healthCols) + 0;
-            if (left > 50 && size(img,2) - right > 0 && size(img,1) - bottom > 200) 
+            if (left > 50 && img_width - right > 0 && img_height - bottom > 200) 
                 heroNum = heroNum + 1;
                 
                 %centered
