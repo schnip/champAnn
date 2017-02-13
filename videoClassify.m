@@ -4,7 +4,7 @@ open(vw);
 while hasFrame(vr)
 	frame = readFrame(vr);
 	locs = locateChampByHealthbar(frame);
-	if locs ~= [0 0 0 0]
+	if ~isequal(locs, [0 0 0 0])
 		for i=1:size(locs, 1)
 			loc = locs(i,:);
 			clips = clip(frame, loc);
