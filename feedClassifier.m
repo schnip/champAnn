@@ -37,6 +37,6 @@ net.trainParam.showWindow = false;
 net.trainParam.showCommandLine = false;
 
 % Train the Network
-[net,tr] = train(net,data_in',data_out');
+[net,tr] = train(net,data_in',data_out','useGPU','yes');
 
 save('trainedNeural.mat', 'net');
