@@ -34,6 +34,9 @@ heroNum = 0;
 
 % create mask based on health bar color
 mask = zeros(size(red));
+if (gpuDeciceCount > 0)
+    mask = gpuArray(mask);
+end
 mask(hue < 0.04 | hue > 0.98) = 1; % red health bar
 mask(hue < 0.6 & hue > 0.5) = 1; % blue health bar
 mask(hue < 0.36 & hue > 0.3) = 1; % green health bar
