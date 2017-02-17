@@ -8,5 +8,5 @@ for i = 1:size(champs,1)
 	files = dir(strcat(infolder, peep));
 	samples(i) = size(files,1);
 end
-samples
-champs{find(samples<50 & samples > 5)}
+samples;
+champs{find(samples < 5)}
