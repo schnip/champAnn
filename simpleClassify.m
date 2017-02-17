@@ -11,7 +11,7 @@ locs = locateChampByHealthbar(img);
 for i=1:size(locs, 1)
 	loc = locs(i,:);
 	clips = clip(img, loc);
-	feat = featureDetect(clips);
+	feat = doCurrentFeatureDetect(clips);
 	iam = net(feat(:));
 	cn = champs(find(max(iam) == iam))
 	img = annotateImage(img, loc, cn);

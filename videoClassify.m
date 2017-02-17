@@ -13,7 +13,7 @@ while hasFrame(vr)
 		for i=1:size(locs, 1)
 			loc = locs(i,:);
 			clips = clip(frame, loc);
-			feat = featureDetect(clips);
+			feat = doCurrentFeatureDetect(clips);
 			iam = net(feat(:));
 			cn = champs(find(max(iam) == iam))
 			frame = annotateImage(frame, loc, cn);
