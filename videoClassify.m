@@ -1,7 +1,5 @@
-clc
-
 vr = VideoReader('faker_demo.mp4');
-vw = VideoWriter('faker_out2');
+vw = VideoWriter('faker_out');
 open(vw);
 
 load('trainedNeural.mat');
