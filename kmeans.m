@@ -1,14 +1,10 @@
-% Lab 6
-
-clc
-close all
-clear variables
-
-global rows col k red green blue
+function [ret] = kmeans(img)
+%global rows col k red green blue
 
 % read in image, then resize to 8x8
 
-image = imread('12.png');
+%image = imread('12.png');
+image = img;
 
 % img = imresize(image,1/10);
 mask = ones(rows,col);
