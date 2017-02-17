@@ -1,4 +1,7 @@
 load('trainedNeural.mat');
+champs = textscan(fopen('champnames.txt'), '%s');
+champs = champs{1};
+
 vr = VideoReader('faker_demo.mp4');
 vw = VideoWriter('faker_out');
 open(vw);
