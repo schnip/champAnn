@@ -1,7 +1,7 @@
 % TestMasks
 % Tests thresholds to find the right values for masks.
 
-img = imread('Test_Image_2.png');
+img = imread('test4.jpg');
 
 img = img(1:(size(img, 1) - 50), 1:size(img,2), :);
 
@@ -23,7 +23,7 @@ mask(hue < 0.6 & hue > 0.5) = 1; % blue health bar
 mask(hue < 0.36 & hue > 0.3) = 1; % green health bar
 
 mask(val < 0.6) = 0;    % eliminate dim regions
-%mask(val < 0.6 & sat > 0.7) = 1;
+mask(val < 0.4 & sat > 0.7) = 1;
 mask(blue < 15 & red < 15 & green < 15) = 1; % black/empty health bar
 
 mask = imerode(mask,strel('square',4));
@@ -37,7 +37,7 @@ max(max(label));
 pixels = zeros(size(label));
 imshow(label);
 % imtool(img_hsv);
-% imtool(img);
+imtool(img);
 
 % Start displaying certain hsv bands
 % figure(2);

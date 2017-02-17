@@ -2,7 +2,7 @@ clearvars
 close all
 clc
 
-img = imread('RedChampTest.jpg');
+img = imread('testBlue.jpg');
 imshow(img);
 
 locations = locateChampByHealthbar(img);

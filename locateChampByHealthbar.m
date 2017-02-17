@@ -34,7 +34,7 @@ heroNum = 0;
 
 % create mask based on health bar color
 mask = zeros(size(red));
-mask(hue < 0.03 | hue > 0.98) = 1; % red health bar
+mask(hue < 0.04 | hue > 0.98) = 1; % red health bar
 mask(hue < 0.6 & hue > 0.5) = 1; % blue health bar
 mask(hue < 0.36 & hue > 0.3) = 1; % green health bar
 
@@ -55,10 +55,10 @@ mask(712:1080, 1630:1920) = 0;
 label = bwlabel(mask);
 numRegions = max(max(label));
 pixels = zeros(size(label));
-figure(2);
-imshow(label);
-imtool(img_hsv);
-
+% figure(2);
+% imshow(label);
+% imtool(img_hsv);
+% 
 % figure(3);
 for i=1:numRegions
     pixels(:,:) = 0;
