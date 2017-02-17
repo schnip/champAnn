@@ -11,7 +11,7 @@ for i = 1:size(champs,1)
 		if strfind(sample.name, '.png')
 			outname = strcat(outfolder, peep, '/', strrep(sample.name, 'png', 'mat'));
 			img = imread(strcat(infolder, peep, '/', sample.name));
-			features = featureDetect(img);
+			features = doCurrentFeatureDetect(img);
 			save(outname, 'features');
 		end
 	end

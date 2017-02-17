@@ -1,7 +1,7 @@
 infolder = 'featureset/';
 champs = textscan(fopen('champnames.txt'), '%s');
 champs = champs{1};
-feature_num = 7*7*3;
+feature_num = doCurrentFeatureDetect(1,1);
 data_out = zeros(size(champs));
 data_in = zeros(4,feature_num);
 index = 1;
