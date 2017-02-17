@@ -24,7 +24,8 @@ end
 %net = network(feature_num, 3, [1 1 1]', zeros(feature_num), zeros(feature_num), ones(1, size(champs, 1)));
 
 % Thing from nprtool
-hiddenLayerSize = [100 100 100];
+loadlayersize = textscan(fopen('NNhidden.txt'), '%f');
+hiddenLayerSize = loadlayersize{1}';
 net = patternnet(hiddenLayerSize);
 
 
