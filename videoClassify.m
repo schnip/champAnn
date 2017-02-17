@@ -1,6 +1,13 @@
+clc
+
 vr = VideoReader('faker_demo.mp4');
-vw = VideoWriter('faker_out');
+vw = VideoWriter('faker_out2');
 open(vw);
+
+load('trainedNeural.mat');
+champs = textscan(fopen('champnames.txt'), '%s');
+champs = champs{1};
+
 while hasFrame(vr)
 	frame = readFrame(vr);
 	locs = locateChampByHealthbar(frame);
