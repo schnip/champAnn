@@ -1,0 +1,9 @@
+clearvars
+close all
+clc
+
+img = imread('RedChamp.png');
+imshow(img);
+
+locations = locateChampByHealthbar(img);
+

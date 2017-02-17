@@ -39,7 +39,8 @@ mask(hue < 0.6 & hue > 0.5) = 1; % blue health bar
 mask(hue < 0.36 & hue > 0.3) = 1; % green health bar
 
 mask(val < 0.6) = 0;    % eliminate dim regions
-mask(blue < 15 & red < 15 & green < 15) = 1; % black/empty health bar
+mask(val < 0.03) = 1;   % black/empty health bar
+mask(sat > 0.9 & val < 0.4) = 1;    % black lines within health bar
 
 mask = imerode(mask,strel('square',4));
 mask = imdilate(mask,strel('square',4));
@@ -54,9 +55,9 @@ mask(712:1080, 1630:1920) = 0;
 label = bwlabel(mask);
 numRegions = max(max(label));
 pixels = zeros(size(label));
-%figure(2);
-%imshow(label);
-%imtool(img_hsv);
+figure(2);
+imshow(label);
+imtool(img_hsv);
 
 % figure(3);
 for i=1:numRegions
@@ -91,7 +92,7 @@ for i=1:numRegions
             left = min(healthCols) - 50;
             bottom = max(healthRows) + 200;
             right = max(healthCols) + 0;
-            if (left > 50 && img_width - right > 0 && img_height - bottom > 200) 
+            if (left > 50 && img_width - right > 0 && img_height - bottom > 170) 
                 heroNum = heroNum + 1;
 
                 if single_return == 1
