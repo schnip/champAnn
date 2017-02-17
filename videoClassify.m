@@ -1,3 +1,4 @@
+load('trainedNeural.mat');
 vr = VideoReader('faker_demo.mp4');
 vw = VideoWriter('faker_out');
 open(vw);
