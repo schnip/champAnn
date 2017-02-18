@@ -1,1 +1,0 @@
-mcc -mv feedClassifier.m
