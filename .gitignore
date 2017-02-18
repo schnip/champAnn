@@ -2,3 +2,5 @@ faker_origin.mp4
 faker_original.mp4
 faker_out*
 *.avi
+testImages/*
+trainImages/*
