@@ -1,4 +1,4 @@
-infolder = 'trainingimg/';
+infolder = 'allImages/';
 outfolder = 'featureset/';
 champs = textscan(fopen('champnames.txt'), '%s');
 champs = champs{1};
