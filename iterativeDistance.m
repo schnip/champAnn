@@ -1,6 +1,6 @@
-function [ means, classes, distances ] = iterativeDistance( means, classes, img, distances )
+function [ means, classes, distances ] = iterativeDistance( means, classes, img, distances, rows, col, k, red, green, blue )
 
-global rows col k red green blue
+% global rows col k red green blue
 
 for i=1:rows
     for j=1:col

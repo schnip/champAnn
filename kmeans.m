@@ -5,6 +5,7 @@ function [ret] = kmeans(img)
 
 %image = imread('12.png');
 image = img;
+[rows, col] = size(img);
 
 % img = imresize(image,1/10);
 mask = ones(rows,col);
@@ -25,6 +26,11 @@ img=cat(3,red,green,blue);
 %figure(2)
 %imshow(im2uint8(img));
 
+ret = featureDetect(img);
+return;
+
+ret = tall/kmeans(img,4);
+return;
 
 
 % Assigning means
@@ -40,12 +46,15 @@ classes = zeros(rows,col);
 
 counter = 0;
 while(counter<8)
-    [means, classes, distances] = iterativeDistance(means, classes, img, distances);
+    [means, classes, distances] = iterativeDistance(means, classes, img, distances, rows, col, k, red, green, blue);
     counter = counter+1;
 end
 
-figure(1)
-imshow(img);
+ret = means;
+return;
+
+%figure(1)
+%imshow(img);
 
 outputImage = zeros(rows,col,3);
 
@@ -59,6 +68,6 @@ for o = 1:rows
     end
 end
 
-figure(2)
+%figure(2)
 imshow(outputImage);
 
