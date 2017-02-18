@@ -8,5 +8,5 @@ if (nargin > 1)
 end
 
 img = varargin{1};
-%ret = featureDetect(img);
-ret = kmeans(img);
+ret = featureDetect(img);
+%ret = kmeans(img);
