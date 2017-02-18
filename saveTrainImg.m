@@ -1,4 +1,5 @@
 function saveTrainImg(img, champname)
+% This function saves an image to a given champion's image folder, giving it a name that won't conflict
 
 foldpath = 'trainingimg/';
 foldpath = strcat(foldpath, champname);

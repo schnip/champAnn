@@ -1,3 +1,5 @@
+% Looks to see who we still don't have any training data
+
 infolder = 'trainingimg/';
 champs = textscan(fopen('champnames.txt'), '%s');
 champs = champs{1};

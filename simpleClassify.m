@@ -1,3 +1,5 @@
+% Just runs a simple case to make sure that all the machinery is working to do the detection
+
 load('trainedNeural.mat');
 load('featureset/aatrox/2.mat');
 champs = textscan(fopen('champnames.txt'), '%s');

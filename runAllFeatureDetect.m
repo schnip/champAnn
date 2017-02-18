@@ -1,3 +1,5 @@
+% Runs feature detection on every image that we have have in the dataset
+
 infolder = 'allImages/';
 outfolder = 'featureset/';
 champs = textscan(fopen('champnames.txt'), '%s');
