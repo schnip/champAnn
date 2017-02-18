@@ -1,3 +1,4 @@
+% This script gives the number of samples for each champion
 infolder = 'trainingimg/';
 champs = textscan(fopen('champnames.txt'), '%s');
 champs = champs{1};
