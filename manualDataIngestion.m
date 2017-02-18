@@ -1,3 +1,5 @@
+% This script takes all the images from the ingestfolder, then detects and clips, then prompts the user to whom the character is, then is saved in the correct folder
+
 close all
 clear all
 
