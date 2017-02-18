@@ -1,4 +1,5 @@
 function [locations] = locateChampByHealthbar(varargin)
+% This function takes a screenshot of the game, finds the healthbars, and then returns boundingboxes for the champions below them. Optionally can move the box around to give lots more results
 
 img = varargin{1};
 

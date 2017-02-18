@@ -1,3 +1,5 @@
+% This script loads up all the feature detected data, and then feeds it in to the neural net, saving the trained net to a file
+
 infolder = 'featureset/';
 champs = textscan(fopen('champnames.txt'), '%s');
 champs = champs{1};

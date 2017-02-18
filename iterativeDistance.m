@@ -1,4 +1,5 @@
 function [ means, classes, distances ] = iterativeDistance( means, classes, img, distances, rows, col, k, red, green, blue )
+% Helper function for kmeans, finding the distances
 
 % global rows col k red green blue
 

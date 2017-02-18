@@ -1,4 +1,6 @@
 function [ret] = featureDetect(img)
+	% This function is basically just the feature detection from the sunset project earlier in the quarter
+	% It is an average on a $split by $split grid, across all three of the RGB dimensions
 	split = 7;
 	ret = zeros(split, split, 3);
 	xlen = size(img, 1) / split - 1;

@@ -1,4 +1,5 @@
 function [ret] = kmeans(img)
+% This is a kmeans feature detection, but was butured to just have the remove background and then run the other feature detection on that result
 %global rows col k red green blue
 
 % read in image, then resize to 8x8

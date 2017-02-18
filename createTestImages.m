@@ -1,4 +1,5 @@
-clc
+% This script separates the training images in to a folder that has training images that doesn't have the test images in there, and then also a test folder.
+
 clearvars
 close all
 
