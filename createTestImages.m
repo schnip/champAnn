@@ -2,20 +2,23 @@ clc
 clearvars
 close all
 
-
-trainFolder = 'trainingimg/';
+sourceFolder = 'allImages/';
 testFolder = 'testImages/';
-fileList = dir(trainFolder);
+trainFolder = 'trainImages/';
+fileList = dir(sourceFolder);
 
-maxImagesMoved = 4;
+maxTestImages = 4;
 
 for i = 3:size(fileList)
-    currFolder = strcat(fileList(i).name, '/');
-    subdir = dir(strcat(trainFolder, currFolder));
-    numImagesMoved = min(maxImagesMoved, size(subdir)-2);
-    for j = 3:numImagesMoved+2
-        fromFold = strcat(trainFolder, currFolder, subdir(j).name);
-        toFold = strcat(testFolder, currFolder);
+    currFolder = strcat(fileList(i).name, '/')
+    subdir = dir(strcat(sourceFolder, currFolder));
+    for j = 3:size(subdir)
+        fromFold = strcat(sourceFolder, currFolder, subdir(j).name);
+        if (j < 3 + maxTestImages)
+            toFold = strcat(testFolder, currFolder);
+        else
+            toFold = strcat(trainFolder, currFolder);
+        end
         copyfile(fromFold, toFold);
     end
 end
